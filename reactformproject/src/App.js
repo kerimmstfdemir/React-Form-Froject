@@ -9,11 +9,14 @@ import PrivateRouter from './router/PrivateRouter';
 function App() {
   return (
     <BrowserRouter>
-    <Navbar />
+      <Navbar />
       <Routes>
-        <Route index element={<PrivateRouter />}/>
-        <Route path='home/product' element={<Product />}/>
-        <Route path='home/contact' element={<Contact />}/>
+        <Route path="home/product" element={<PrivateRouter />}>
+          <Route path="" element={<Product />} />
+        </Route>
+        <Route path="home/contact" element={<PrivateRouter />}>
+          <Route path="" element={<Contact />} />
+        </Route>
       </Routes>
       <Footer />
     </BrowserRouter>
