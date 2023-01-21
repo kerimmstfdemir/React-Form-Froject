@@ -2,7 +2,7 @@
 const Footer = () => {
   return (
     <div>
-      <footer className="flex justify-evenly bg-[#333333] text-[#FAFAFA] py-4 ">
+      <footer className="flex justify-evenly fixed bottom-0 left-0 w-full bg-[#333333] text-[#FAFAFA] py-4 ">
         <p>
           © {new Date().getFullYear()} Copyright - Developed by{" "}
           <a
