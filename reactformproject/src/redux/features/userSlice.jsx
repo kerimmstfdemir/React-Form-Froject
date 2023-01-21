@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const initialState = {
     loading: false,
@@ -6,6 +7,26 @@ const initialState = {
     user: {},
     productsData: []
 }
+
+const token = process.env.REACT_APP_TOKEN
+
+//* postApp
+export const postApp = createAsyncThunk(
+    "postApp/postApp",
+    async (data, thunkAPI) => {
+        try{
+            const response = await axios.post(
+                "https://api.kitapbulal.com/chat/add", data, {
+                    headers: {
+                        Authorization: `sAuth ${token}`
+                    }
+                }
+            )
+        } catch(error) {
+            console.log(error.message)
+        }
+    }
+)
 
 export const getProductsData = createAsyncThunk(
     "product/getProductData",

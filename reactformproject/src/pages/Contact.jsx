@@ -1,6 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import { TextField, Button } from "@mui/material"
 import * as Yup from "yup"
+import { useDispatch } from "react-redux";
+import { postApp } from "../redux/features/userSlice";
 
 const FormShema = Yup.object().shape({
   Name: Yup.string().required("Ad Soyad Gerekli"),
@@ -12,6 +14,9 @@ const FormShema = Yup.object().shape({
 })
 
 const Contact = () => {
+
+  const dispatch = useDispatch()
+
   return (
     <Formik
     initialValues={{
@@ -22,6 +27,7 @@ const Contact = () => {
     }}
     validationSchema={FormShema}
     onSubmit={(values, actions) => {
+      dispatch(postApp(values))
       actions.resetForm()
       actions.setSubmitting(false)
     }}
